@@ -1,77 +1,40 @@
-# Interested in working for Famly?
+# Nursery children attendance app 🧸
 
-Give us a chance to see your beautiful code! 🤩
+## Setup intructions 🛠️
 
-## How to get started
-- Fork this repository
-- Create a small application in React (or another agreed upon framework)
-- Describe your design decisions and setup instructions in the README.md of the forked repository
+1. **Clone this repository:**
+   ```bash
+   git clone <repository_url>
+   ```
 
-## The assignment
-You are tasked to build a simple application for a nursery to manage the attendance of children each day.
+2. **Create a `.env` file in the root directory:**
+   ```bash
+   touch .env
+   ```
 
-The application should be able to do 3 things:
-1. List children with some form of pagination/lazy-loading/infinite-scroll
-2. Checkin a child
-3. Checkout a child
+3. **Add your API access token to the newly created `.env` file:**
+   ```bash
+   REACT_APP_ACCESS_TOKEN=<access_token>
+   ```
 
-Don't worry about design or anything like that.
+4. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-If you have any questions feel free to reach out to the person who sent you the assignment ☺️
+5. **Start the project:**
+   ```bash
+   npm start
+   ```
 
-## API Specification
+6. **Open [http://localhost:3000](http://localhost:3000) to view it in the browser.**
 
-You have received an access token in the email that contained the link to this page.
 
-### Fetch some children from
+## Decisions 📝
 
-The API does not support any limit or offset, so the pagination/lazy-loading/infinite-scroll will have to be done client-side only.
+- **Project Initialization:** This project was bootstrapped with Create React App for an easy start and initial setup.
+- **Code Quality:** ESLint and Prettier are integrated for better code formatting and error prevention.
+- **Type Safety:** The app is written in TypeScript to ensure type checking and data compatibility.
+- **Data Management:** React Query is used for managing data fetching and asynchronous state management to display proper success/error/loading statuses to the user. It also provides features like optimistic updates and data refetching.
+- **User Experience:** Infinite scroll is implemented to enhance user experience. This feature splits data into chunks, initially displaying the first ten records and loading more data as the user scrolls.
 
-```
-GET https://app.famly.co/api/daycare/tablet/group
-Arguments: {
-	accessToken: <accessToken>,
-	groupId: '86413ecf-01a1-44da-ba73-1aeda212a196',
-	institutionId: 'dc4bd858-9e9c-4df7-9386-0d91e42280eb'
-}
-```
-
-Example in cURL:
-
-```bash
-curl "https://app.famly.co/api/daycare/tablet/group?accessToken=<accessToken>&groupId=86413ecf-01a1-44da-ba73-1aeda212a196&institutionId=dc4bd858-9e9c-4df7-9386-0d91e42280eb"
-```
-
-### Checkin child
-```
-POST https://app.famly.co/api/v2/children/<childId>/checkins
-
-Arguments: {
-	accessToken: <accessToken>
-	pickupTime: 16:00
-}
-```
-
-Example in cURL:
-
-```bash
-curl \
-  -d 'accessToken=<accessToken>&pickupTime=16:00' \
-  https://app.famly.co/api/v2/children/fcd683d0-bc31-468c-948f-1ca70b91439d/checkins
-```
-
-### Checkout child
-```
-POST https://app.famly.co/api/v2/children/<childId>/checkout
-Arguments: {
-	accessToken: <accessToken>
-}
-```
-
-Example in cURL:
-
-```bash
-curl \
-  -d 'accessToken=<accessToken>' \
-  https://app.famly.co/api/v2/children/fcd683d0-bc31-468c-948f-1ca70b91439d/checkout
-```
